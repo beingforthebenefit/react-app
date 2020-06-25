@@ -14,14 +14,6 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    };
-  }
-
   handleClick(i) {
     // Using `slice()` to create a copy of the board state array
     const squares = this.state.squares.slice();
