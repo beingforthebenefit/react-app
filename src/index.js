@@ -14,20 +14,6 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  handleClick(i) {
-    // Using `slice()` to create a copy of the board state array
-    const squares = this.state.squares.slice();
-    // Skipping this method if the game is complete or square is filled already
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
-
   renderSquare(i) {
     return (
       <Square
@@ -40,7 +26,6 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -70,6 +55,24 @@ class Game extends React.Component {
       }],
       xIsNext: true,
     };
+  }
+
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length -1];
+    // Using `slice()` to create a copy of the board state array
+    const squares = current.squares.slice();
+    // Skipping this method if the game is complete or square is filled already
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      history: history.concat([{
+        squares: squares,
+      }]),
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
   render() {
