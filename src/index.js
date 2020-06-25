@@ -24,6 +24,7 @@ class Board extends React.Component {
   }
 
   handleClick(i) {
+    // Using `slice()` to create a copy of the board state array
     const squares = this.state.squares.slice();
     squares[i] = 'X';
     this.setState({squares: squares});
