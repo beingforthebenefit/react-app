@@ -1,3 +1,6 @@
+# Purpose
+This is a tic tac toe game created with React for educational purposes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
