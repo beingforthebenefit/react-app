@@ -69,9 +69,12 @@ class Game extends React.Component {
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      history: history.concat([{
-        squares: squares,
-      }]),
+      history: history.concat([
+        {
+          squares: squares,
+          lastSquare: i,
+        }
+      ]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
@@ -90,7 +93,9 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start';
+      const col = 1 + step.lastSquare % 3;
+      const row = Math.ceil(step.lastSquare / 3);
+      const desc = move ? `Go to move #${move} (${col}, ${row})` : 'Go to game start';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
