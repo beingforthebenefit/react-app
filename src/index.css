@@ -52,3 +52,7 @@ ol, ul {
 .active-move {
   font-weight: bold;
 }
+
+.highlight {
+  background: #ff0000;
+}
