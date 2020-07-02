@@ -1,5 +1,5 @@
 # Demo
-A production version of this app is hosted at [geraldtodd.dev/react-app](https://geraldtodd.dev/react-app).
+A production version of this app is hosted at [gtodd.dev/react-app](https://gtodd.dev/react-app).
 
 # Purpose
 This is a tic tac toe game created with React for educational purposes
